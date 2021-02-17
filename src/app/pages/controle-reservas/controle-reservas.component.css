@@ -1,0 +1,30 @@
+.home-content {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100% - 20px);
+    justify-content: space-evenly;
+     padding: 10px;
+  }
+  
+  .app-title {
+    text-transform: uppercase;
+    padding-left: 26px;
+    justify-content: center;
+    background: #070c52;
+    color:white;
+  }
+
+  .mat-card-image {
+    width: 182px;
+    height: 268px;
+    margin: auto;
+    display: block;
+  }
+  
+  .filtro-listagem {
+    width: calc(100% - 50px);
+  }
+
+  table {
+    width: 100%;
+  }
