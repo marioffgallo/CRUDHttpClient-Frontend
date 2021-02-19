@@ -1,27 +1,31 @@
 # CRUDHttpClient
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.1.
+EN-US
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.1 and Angular Material version 11.2.0.
+
+PT-BR
+Este Projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) version 11.1.1 e Angular Material versão 11.2.0
 
 ## Development server
 
+EN-US
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+PT-BR
+Execute `ng serve` para o servidor dev. Navegue até `http://localhost:4200/`. O app irá recarregar automaticamente se houver qualquer alteração salva nos arquivos de origem.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Back-End
 
-## Build
+EN-US
+This project uses Java SpringBoot MVC for Back-end, which execute the the REST calls to the databse MySQL. Use the repo `https://github.com/marioffgallo/CRUDHttpClient-Backend` with the database app MySQL for the correct implementation.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+PT-BR
+Neste projeto foi utilizado Java SpringBoot MVC como Back-end, no qual realiza as chamadas REST para o banco de dados MySQL. Utilizar o repositório `https://github.com/marioffgallo/CRUDHttpClient-Backend` em conjunto com o banco MySQL para o correto funcionamento.
 
-## Running unit tests
+## Setup Locale
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+EN-US
+For local configuration, make a clone from this repo, in the console on Visual Code execute the command `npm install` which installs the missing dependencies, after that just execute the command `ng serve` which start the application. Its necessary the Backend Java and MySQL running for the correct operation.
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+PT-BR
+Para configuração local, efetuar o clone deste repositório, no console do Visual Code executar o `npm install` para instalar as dependencias, após isso usar o comando `ng serve` para executar a aplicação. É necessário que o Backend Java e o MySQL estejam executando tambem para o correto funcionamento.

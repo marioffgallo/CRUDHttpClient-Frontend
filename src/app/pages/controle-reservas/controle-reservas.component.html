@@ -1,6 +1,6 @@
 <mat-toolbar class="app-title" color="accent">Reservas Cadastradas</mat-toolbar>
 
-<!--
+<!-- Descomentar esse bloco para utilizar o filtro sem botão
 <mat-form-field class="filtro-listagem" *ngIf="dataSource.filteredData.length > 0">
   <input matInput placeholder="Filtro" #input (keyup)="doFilter(input.value)" />
 </mat-form-field>
@@ -14,6 +14,7 @@ color="primary"
 </button>
 -->
 
+<!-- Comentar o bloco abaixo se for utilizar o filtro acima sem botões -->
 <div class="filtro-listagem" *ngIf="dataSource.filteredData.length > 0">
   <input matInput placeholder="Filtro" #input/>
   <button mat-raised-button color="primary" (click)="doFilter(input.value)" [disabled]="input.value.length < 3">Pesquisar</button>
