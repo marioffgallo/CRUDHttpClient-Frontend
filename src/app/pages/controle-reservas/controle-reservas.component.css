@@ -3,15 +3,14 @@
     flex-wrap: wrap;
     width: calc(100% - 20px);
     justify-content: space-evenly;
-     padding: 10px;
+    padding: 10px;
   }
   
   .app-title {
     text-transform: uppercase;
     padding-left: 26px;
     justify-content: center;
-    background: #070c52;
-    color:white;
+    margin: 10px auto;
   }
 
   .mat-card-image {
@@ -22,7 +21,19 @@
   }
   
   .filtro-listagem {
-    width: calc(100% - 50px);
+    padding-left: 30px;
+    padding-bottom: 30px;
+    width: calc(50% - 50px);
+  }
+
+  .buttonCadastrar {
+    margin-top: 3%;
+    margin-left: 5%;
+  }
+
+  .semRegistro {
+    margin-left: 10%;
+    justify-content: center;
   }
 
   table {

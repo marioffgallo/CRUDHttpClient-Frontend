@@ -1,0 +1,34 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      Resumo da Reserva Nº {{ resume.id }}
+    </mat-card-title>
+    <mat-card-subtitle>
+        {{ resume.status }}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+      <mat-list>
+        <mat-list-item>Nome: {{ resume.primeiroNome }} {{ resume.segundoNome }}</mat-list-item>
+        <mat-list-item>E-mail: {{ resume.email }}</mat-list-item>
+        <mat-list-item>Quantidade de Pessoas: {{ resume.qtdePessoas }}</mat-list-item>
+        <mat-list-item>Data de Chegada: {{ resume.dtChegada | date: "dd/MM/yyyy" }}</mat-list-item>
+        <mat-list-item>Data de Partida: {{ resume.dtSaida | date: "dd/MM/yyyy" }}</mat-list-item>
+        <mat-list-item>Check-in: {{ resume.timeChegada }} | Check-out: {{ resume.timeSaida }}</mat-list-item>
+        <mat-list-item>Transporte Grátis? {{ resume.transpGratis }}</mat-list-item>
+        <mat-list-item>Código do Voo: {{ resume.codigoVoo }}</mat-list-item>
+        <mat-list-item>Requisitos especiais: </mat-list-item>
+        <mat-list-item>{{ resume.reqEspeciais }}</mat-list-item>
+      </mat-list>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      mat-raised-button
+      color="primary"
+      cdkFocusInitial
+      [mat-dialog-close]="true"
+    >
+      Fechar
+    </button>
+  </mat-card-actions>
+</mat-card>

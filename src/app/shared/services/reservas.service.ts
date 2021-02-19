@@ -20,32 +20,32 @@ export class ReservasService {
    * Do a posting 
    * @param reserva
    */
-  createReserva(reserva: Reserva): Observable<Message> {
-      return this.http.post<Message>(`${this.baseUrl}` + `/create`, reserva)
+  createReserva(reserva: Reserva): Observable<Reserva> {
+      return this.http.post<Reserva>(`${this.baseUrl}` + `/create`, reserva)
                   .pipe(
                     retry(3),
                     catchError(this.handleError)
                   );
   }
 
-  updateReserva(reserva: Reserva): Observable<Message> {
-      return this.http.put<Message> (`${this.baseUrl}` + `/update/` + reserva.id, reserva)
+  updateReserva(reserva: Reserva): Observable<Reserva> {
+      return this.http.put<Reserva> (`${this.baseUrl}` + `/update/` + reserva.id, reserva)
         .pipe(
             retry(3),
             catchError(this.handleError)
           );
   }
 
-  deleteReserva(id: number): Observable<Message> {
-      return this.http.delete<Message>(`${this.baseUrl}` + `/delete/` + id)
+  deleteReserva(id: number): Observable<Reserva> {
+      return this.http.delete<Reserva>(`${this.baseUrl}` + `/delete/` + id)
             .pipe(
               retry(3),
               catchError(this.handleError)  
             );
   }
 
-  retrieveAllReserva(): Observable<Message> {
-      return this.http.get<Message>(`${this.baseUrl}` + `/findall`)
+  retrieveAllReserva(): Observable<Reserva> {
+      return this.http.get<Reserva>(`${this.baseUrl}` + `/findall`)
                     .pipe(
                       retry(3),
                       catchError(this.handleError)

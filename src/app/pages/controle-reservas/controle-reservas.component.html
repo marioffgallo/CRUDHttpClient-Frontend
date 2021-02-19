@@ -1,39 +1,97 @@
-<mat-toolbar class="app-title">Reservas Cadastradas</mat-toolbar>
-<table mat-table [dataSource]="reservas" class="mat-elevation-z8">
+<mat-toolbar class="app-title" color="accent">Reservas Cadastradas</mat-toolbar>
 
-    <!-- Nome Column -->
-    <ng-container matColumnDef="nome">
-        <th mat-header-cell *matHeaderCellDef> Nome do cliente</th>
-        <td mat-cell *matCellDef="let reserva"> {{reserva.primeiroNome}} {{reserva.segundoNome}}</td>
-    </ng-container>
+<!--
+<mat-form-field class="filtro-listagem" *ngIf="dataSource.filteredData.length > 0">
+  <input matInput placeholder="Filtro" #input (keyup)="doFilter(input.value)" />
+</mat-form-field>
+<button
+class="buttonCadastrar"
+mat-raised-button
+color="primary"
+(click)="this.router.navigateByUrl('/cadastro')"
+>
+  Cadastrar nova reserva
+</button>
+-->
 
-    <!-- Data de Chegada Column -->
-    <ng-container matColumnDef="dtChegada">
-        <th mat-header-cell *matHeaderCellDef> Data de Chegada </th>
-        <td mat-cell *matCellDef="let reserva"> {{reserva.dtChegada | date: 'dd/MM/yyyy'}} </td>
-    </ng-container>
+<div class="filtro-listagem" *ngIf="dataSource.filteredData.length > 0">
+  <input matInput placeholder="Filtro" #input/>
+  <button mat-raised-button color="primary" (click)="doFilter(input.value)" [disabled]="input.value.length < 3">Pesquisar</button>
+  <button mat-raised-button color="accent" (click)="resetFilter()">Limpar</button>
+  <button
+  class="buttonCadastrar"
+  mat-raised-button
+  color="primary"
+  (click)="this.router.navigateByUrl('/cadastro')"
+  >
+    Cadastrar nova reserva
+  </button>
+</div>
 
-    <!-- Data de Saida Column -->
-    <ng-container matColumnDef="dtSaida">
-        <th mat-header-cell *matHeaderCellDef> Data de Saida </th>
-        <td mat-cell *matCellDef="let reserva"> {{reserva.dtSaida | date: 'dd/MM/yyyy'}} </td>
-    </ng-container>
 
-    <!-- Status Column -->
-    <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef> Situação </th>
-        <td mat-cell *matCellDef="let reserva"> {{reserva.status}} </td>
-    </ng-container>
+<table
+  mat-table
+  *ngIf="dataSource.filteredData.length > 0"
+  [dataSource]="dataSource"
+  class="mat-elevation-z8"
+  matSort
+  matSortStart="desc"
+  (matSortChange)="customSort($event)"
+>
+  <!-- Nome Column -->
+  <ng-container matColumnDef="nome">
+    <th mat-header-cell *matHeaderCellDef>Nome do cliente</th>
+    <td mat-cell *matCellDef="let reserva" (click)="openResume(reserva)">
+      {{ reserva.primeiroNome }} {{ reserva.segundoNome }}
+    </td>
+  </ng-container>
 
-    <ng-container matColumnDef="actions">
-        <th mat-header-cell  *matHeaderCellDef> Actions </th>
-        <td mat-cell *matCellDef="let row" >
-            <button color="accent" mat-raised-button (click)="edit(row.id)" [disabled]="checkStatus(row.status)">Editar</button>
-            <button color="warn" mat-raised-button (click)="delete(row.id)" [disabled]="checkStatus(row.status)">Excluir</button>
-        </td>
-    </ng-container>
+  <!-- Data de Chegada Column -->
+  <ng-container matColumnDef="dtChegada">
+    <th mat-header-cell *matHeaderCellDef>Data de Chegada</th>
+    <td mat-cell *matCellDef="let reserva">
+      {{ reserva.dtChegada | date: "dd/MM/yyyy" }}
+    </td>
+  </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    
+  <!-- Data de Saida Column -->
+  <ng-container matColumnDef="dtSaida">
+    <th mat-header-cell *matHeaderCellDef>Data de Saida</th>
+    <td mat-cell *matCellDef="let reserva">
+      {{ reserva.dtSaida | date: "dd/MM/yyyy" }}
+    </td>
+  </ng-container>
+
+  <!-- Status Column -->
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef>Situação</th>
+    <td mat-cell *matCellDef="let reserva">{{ reserva.status }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let row">
+      <button
+        color="accent"
+        mat-raised-button
+        (click)="edit(row.id)"
+        [disabled]="checkStatus(row.status)"
+      >
+        Editar
+      </button>
+      <button
+        color="warn"
+        mat-raised-button
+        (click)="btnDelete(row.id)"
+        [disabled]="checkStatus(row.status)"
+      >
+        Excluir
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
+
+<p class="semRegistro" *ngIf="dataSource.filteredData.length === 0">Sem registros para mostrar</p>

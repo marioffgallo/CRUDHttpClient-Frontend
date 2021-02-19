@@ -1,15 +1,12 @@
+@import 'reset';
+@import 'themes';
+
 body {
   margin: 0;
 }
 
 .center {
   margin: 10px auto;
-}
-
-.app-title {
-  text-transform: uppercase;
-  padding-left: 26px;
-  justify-content: center;
 }
 
 .width50 {
@@ -24,6 +21,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: lightblue;
 }
 
 .full-width {
@@ -42,12 +40,6 @@ body {
   padding: 10px;
 }
 
-.paddingBottom {
-  padding-bottom: 15px;
-}
-
 .quebrar-linha {
   white-space: pre-line;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

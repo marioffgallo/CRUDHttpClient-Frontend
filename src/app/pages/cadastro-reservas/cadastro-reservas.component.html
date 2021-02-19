@@ -1,43 +1,10 @@
-<!--<h2>Create Ticket</h2>
-<div>
-  <form (ngSubmit)="onSubmit()"> 
-
-    <div class="form-group">
-      <label for="firstname">First Name:</label>
-      <input type="text" class="form-control" placeholder="Enter Firstname" 
-                id="firstname" required [(ngModel)]="reserva.primeiroNome" name="firstname">
-    </div>
-
-    <div class="form-group">
-        <label for="lastname">Last Name:</label>
-        <input type="text" class="form-control" placeholder="Enter Lastname" 
-                  id="lastname" required [(ngModel)]="reserva.segundoNome" name="lastname">
-    </div>  
-
-    <div class="form-group">
-        <label for="dtChegada">dtChegada:</label>
-        <input type="text" class="form-control" placeholder="Enter dtChegada" 
-                  id="dtChegada" required [(ngModel)]="reserva.dtChegada" name="dtChegada">
-    </div>        
-    
-
-    <div class="form-group">
-      <label for="dtSaida">dtSaida</label>
-      <input type="text" class="form-control" placeholder="Enter dtSaida" 
-                  id="dtSaida" required [(ngModel)]="reserva.dtSaida" name="dtSaida">
-    </div>
- 
-    <button type="submit" class="btn btn-success">Submit</button>
-  </form>
-</div> -->
-
-<mat-toolbar color="accent">Cadastrar Reserva</mat-toolbar>
+<mat-toolbar class="app-title" color="accent">Cadastrar Reserva</mat-toolbar>
 <div class="main-div">
   <mat-card class="center width50" *ngIf="cadastro">
-    <form autocomplete="off" novalidate [formGroup]="cadastro" (ngSubmit)="onSubmit()" (ngReset)="reset()">
+    <form autocomplete="off" novalidate [formGroup]="cadastro" (ngSubmit)="onSubmit()" (ngReset)="onCancel()">
       <mat-card-content>
-        <app-input-text titulo="Primeiro Nome*" controlName="primeiroNome" [formGroup]="cadastro"></app-input-text>
-        <app-input-text titulo="Segundo Nome*" controlName="segundoNome" [formGroup]="cadastro"></app-input-text>
+        <app-input-text titulo="Seu Nome*" controlName="primeiroNome" [formGroup]="cadastro"></app-input-text>
+        <app-input-text titulo="Seu Sobrenome" controlName="segundoNome" [formGroup]="cadastro"></app-input-text>
         <app-input-text titulo="E-mail*" controlName="email" [formGroup]="cadastro"></app-input-text>
         <app-input-number titulo="Quantidade de Pessoas*" controlName="qtdePessoas" [formGroup]="cadastro"></app-input-number>
 
@@ -54,21 +21,21 @@
                             cadastro.controls.dtSaida.hasError('required')">Campo Obrigatório</mat-error>
           <mat-error *ngIf="cadastro.errors">Partida deve ser maior que Chegada</mat-error>
         </mat-form-field>
-        <app-input-text titulo="Hora da Chegada*" controlName="timeChegada" [formGroup]="cadastro"></app-input-text>
-        <app-input-text titulo="Hora da Saída*" controlName="timeSaida" [formGroup]="cadastro"></app-input-text>
-
+        
+        <app-input-select titulo="Hora da Chegada*" [opcoes]="timeE" controlName="timeChegada" [formGroup]="cadastro"></app-input-select>
+        <app-input-select titulo="Hora da Saída*" [opcoes]="timeS" controlName="timeSaida" [formGroup]="cadastro"></app-input-select>
         <!--
         <app-input-date titulo="Data de Chegada*" controlName="dtChegada" [formGroup]="cadastro"></app-input-date>
         <app-input-date titulo="Data de Saída*" controlName="dtSaida" [formGroup]="cadastro"></app-input-date>
         -->
         <app-input-select titulo="Transporte grátis?*" [opcoes]="resposta" controlName="transpGratis" [formGroup]="cadastro"></app-input-select>
-        <app-input-text titulo="Código do Voo*" controlName="codigoVoo" [formGroup]="cadastro"></app-input-text>
+        <app-input-text titulo="Código do Voo" controlName="codigoVoo" [formGroup]="cadastro"></app-input-text>
         <app-input-text-area titulo="Requisitos Especiais" controlName="reqEspeciais" [formGroup]="cadastro"></app-input-text-area>
         <app-input-select titulo="Status" [opcoes]="situacao" controlName="status" [formGroup]="cadastro"></app-input-select>
         </mat-card-content>
       <mat-card-actions>
         <button type="submit" color="accent" mat-raised-button [disabled]="!cadastro.valid">Salvar</button>
-        <button type="reset" color="warn" mat-raised-button>Cancelar</button>
+        <button type="reset" color="warn" mat-raised-button (click)="onCancel()">Cancelar</button>
       </mat-card-actions>
     </form>
   </mat-card>
